@@ -10,13 +10,36 @@ import Foundation
 final class AuthManager {
     
     class Constants {
-        static let ClientID = "PASTE YOUR CLIENT ID"
-        static let clientSecret = "PASTE YOUR SECRET ID"
+        
+        
+        static let clientID = "Enter ClientID"
+        static let clientSecret = "Enter ClientSecret"
+        static let scopes = "user-read-private"
+        static let redirectURI = "https://github.com/hakanbaran"
     }
     
     static let shared = AuthManager()
     
     private init(){}
+    
+    public var signInURL: URL? {
+        
+        
+        
+        
+        let baseURL = "https://accounts.spotify.com/authorize"
+        
+
+        
+        let urlString = "\(baseURL)?response_type=code&client_id=\(Constants.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=TRUE"
+
+        
+          
+        
+        return URL(string: urlString)
+        
+        
+    }
     
     var isSignedIn: Bool {
         return false

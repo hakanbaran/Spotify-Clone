@@ -27,11 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             window.rootViewController = navVC
         }
+        window.makeKeyAndVisible()
+        self.window = window
         
-        
-        window.rootViewController = TabBarVC()
-        
-        
+        print(AuthManager.shared.signInURL?.absoluteString)
         
         return true
     }

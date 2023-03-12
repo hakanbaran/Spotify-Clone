@@ -30,6 +30,8 @@ class WelcomeVC: UIViewController {
         signInButton.addTarget(self, action: #selector(didTabSignIn), for: .touchUpInside)
         
         
+        AuthManager.shared.signInURL
+        
         
     }
     
@@ -63,7 +65,7 @@ class WelcomeVC: UIViewController {
     
     private func handleSignIn(success: Bool) {
         
-        
+        //Log User in or yell at them for error
     }
     
     
