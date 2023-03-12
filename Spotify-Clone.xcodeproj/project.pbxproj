@@ -29,6 +29,7 @@
 		D45F052229BAD2CF0008E2FB /* AudioTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F052129BAD2CF0008E2FB /* AudioTrack.swift */; };
 		D45F052429BAD2DA0008E2FB /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F052329BAD2DA0008E2FB /* Artist.swift */; };
 		D45F052629BAD2EF0008E2FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F052529BAD2EF0008E2FB /* UserProfile.swift */; };
+		D45F052829BE290A0008E2FB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F052729BE290A0008E2FB /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +57,7 @@
 		D45F052129BAD2CF0008E2FB /* AudioTrack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioTrack.swift; sourceTree = "<group>"; };
 		D45F052329BAD2DA0008E2FB /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		D45F052529BAD2EF0008E2FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		D45F052729BE290A0008E2FB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 				D45F04E829BACF910008E2FB /* AppDelegate.swift */,
 				D45F04EA29BACF910008E2FB /* SceneDelegate.swift */,
 				D45F04F129BACF910008E2FB /* Assets.xcassets */,
+				D45F052729BE290A0008E2FB /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				D45F051829BAD26E0008E2FB /* SearchResultVC.swift in Sources */,
 				D45F050C29BAD1FF0008E2FB /* AuthVC.swift in Sources */,
 				D45F052629BAD2EF0008E2FB /* UserProfile.swift in Sources */,
+				D45F052829BE290A0008E2FB /* Extensions.swift in Sources */,
 				D45F050429BAD13A0008E2FB /* TabBarVC.swift in Sources */,
 				D45F052429BAD2DA0008E2FB /* Artist.swift in Sources */,
 				D45F04EB29BACF910008E2FB /* SceneDelegate.swift in Sources */,
