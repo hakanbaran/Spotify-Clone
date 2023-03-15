@@ -30,8 +30,7 @@ class WelcomeVC: UIViewController {
         signInButton.addTarget(self, action: #selector(didTabSignIn), for: .touchUpInside)
         
         
-        AuthManager.shared.signInURL
-        
+                
         
     }
     
@@ -66,6 +65,21 @@ class WelcomeVC: UIViewController {
     private func handleSignIn(success: Bool) {
         
         //Log User in or yell at them for error
+        
+        guard success else {
+            
+            let alert = UIAlertController(title: "Oops", message: "Something went wrong when signin in...", preferredStyle: .alert)
+            
+            let alertAction = UIAlertAction(title: "Dismiss...", style: .default)
+            
+            alert.addAction(alertAction)
+            present(alert, animated: true)
+            return
+        }
+        
+        let mainAppTabBarVC = TabBarVC()
+        mainAppTabBarVC.modalPresentationStyle = .fullScreen
+        present(mainAppTabBarVC, animated: true)
     }
     
     

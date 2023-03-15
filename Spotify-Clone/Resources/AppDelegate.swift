@@ -21,16 +21,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             window.rootViewController = TabBarVC()
         } else {
             let navVC = UINavigationController(rootViewController: WelcomeVC())
-            
+
             navVC.navigationBar.prefersLargeTitles = true
             navVC.viewControllers.first?.navigationItem.largeTitleDisplayMode = .always
-            
+
             window.rootViewController = navVC
         }
         window.makeKeyAndVisible()
         self.window = window
-        
-        print(AuthManager.shared.signInURL?.absoluteString)
         
         return true
     }
