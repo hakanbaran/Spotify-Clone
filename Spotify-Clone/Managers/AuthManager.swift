@@ -9,7 +9,7 @@ import Foundation
 
 final class AuthManager {
     
-    class Constants {
+    struct Constants {
         static let clientID = "Enter ClientID"
         static let clientSecret = "Enter ClientSecret"
         
@@ -21,6 +21,8 @@ final class AuthManager {
     }
     
     static let shared = AuthManager()
+    
+    private var refreshingToken = false
     
     private init(){}
     
@@ -120,16 +122,53 @@ final class AuthManager {
         
     }
     
+    private var onRefreshBlocks = [((String) -> Void )]()
+    
+    // Supplies valid token to be used with API Calls
+    
+    public func withValidToken(completion: @escaping(String) -> Void) {
+        
+        guard !refreshingToken else {
+            // Append the completion
+            
+            onRefreshBlocks.append(completion)
+            return
+        }
+        
+        if shouldRefreshToken {
+            // Refresh
+            
+            refreshIfNeeded { [weak self] success in
+                if let token = self?.accessToken, success {
+                    completion(token)
+                }
+            }
+        }
+        else if let token = accessToken {
+            
+            completion(token)
+        }
+        
+    }
+    
+    
+    
     public func refreshIfNeeded(completion: @escaping (Bool)-> Void) {
         
-//        guard shouldRefreshToken else {
-//            completion(true)
-//            return
-//        }
+        guard !refreshingToken else {
+            return
+        }
+        
+        guard shouldRefreshToken else {
+            completion(true)
+            return
+        }
         
         // Refresh the Token
         
         guard let url = URL(string: Constants.tokenAPIURL) else {return}
+        
+        refreshingToken = true
 
         var components = URLComponents()
         components.queryItems = [
@@ -160,6 +199,8 @@ final class AuthManager {
         
         
         let task = URLSession.shared.dataTask(with: request) { [weak self] data, response, error in
+            
+            self?.refreshingToken = false
 
             guard let data = data, error == nil else {
                 completion(false)
@@ -168,7 +209,8 @@ final class AuthManager {
 
             do {
                 let result = try JSONDecoder().decode(AuthResponse.self, from: data)
-                print("Successfully refreshed")
+                self?.onRefreshBlocks.forEach {$0(result.access_token)}
+                self?.onRefreshBlocks.removeAll()
                 self?.cacheToken(result: result)
                 completion(true)
             } catch {
