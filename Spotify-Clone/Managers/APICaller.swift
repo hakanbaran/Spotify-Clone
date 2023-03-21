@@ -13,10 +13,40 @@ final class APICaller {
     
     private init() {}
     
+    struct Constans {
+        static let baseAPIURL = "https://api.spotify.com/v1"
+    }
+    
+    enum APIError: Error {
+        case failedToGetData
+    }
+    
     public func getCurrentUserProfile(completion: @escaping(Result <UserProfile, Error>) -> Void) {
         
         
-//        createRequest(with: <#T##URL?#>, type: <#T##HTTPMethod#>, completion: <#T##(URLRequest) -> Void#>)
+        createRequest(with: URL(string: Constans.baseAPIURL + "/me"), type: .GET) { baseRequest in
+            let task = URLSession.shared.dataTask(with: baseRequest) { data, response, error in
+                guard let data = data, error == nil else {
+                    
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    
+                    let result = try JSONSerialization.jsonObject(with: data)
+                    
+                    print(result)
+                    
+                } catch {
+                    completion(.failure(error))
+                }
+                
+                
+            }
+            
+            task.resume()
+        }
         
     }
     
