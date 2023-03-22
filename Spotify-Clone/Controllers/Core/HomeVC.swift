@@ -22,8 +22,8 @@ class HomeVC: UIViewController {
     
     @objc func didTabSettings() {
         
-        let vc = ProfileVC()
-        vc.title = "Profile"
+        let vc = SettingsVC()
+        vc.title = "Settings"
         vc.navigationItem.largeTitleDisplayMode = .never
         
         navigationController?.pushViewController(vc, animated: true)

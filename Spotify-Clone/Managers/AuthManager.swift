@@ -13,7 +13,6 @@ final class AuthManager {
         static let clientID = "Enter ClientID"
         static let clientSecret = "Enter ClientSecret"
         
-        
         static let baseURL = "https://accounts.spotify.com/authorize"
         static let redirectURI = "https://github.com/hakanbaran"
         static let tokenAPIURL = "https://accounts.spotify.com/api/token"

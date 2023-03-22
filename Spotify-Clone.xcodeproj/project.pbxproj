@@ -31,6 +31,7 @@
 		D45F052629BAD2EF0008E2FB /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F052529BAD2EF0008E2FB /* UserProfile.swift */; };
 		D45F052829BE290A0008E2FB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F052729BE290A0008E2FB /* Extensions.swift */; };
 		D45F052A29C191130008E2FB /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F052929C191130008E2FB /* AuthResponse.swift */; };
+		D4B7469D29C99AD2003734EC /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7469C29C99AD2003734EC /* SettingsModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		D45F052529BAD2EF0008E2FB /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		D45F052729BE290A0008E2FB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D45F052929C191130008E2FB /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		D4B7469C29C99AD2003734EC /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 				D45F052329BAD2DA0008E2FB /* Artist.swift */,
 				D45F052529BAD2EF0008E2FB /* UserProfile.swift */,
 				D45F052929C191130008E2FB /* AuthResponse.swift */,
+				D4B7469C29C99AD2003734EC /* SettingsModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				D45F052829BE290A0008E2FB /* Extensions.swift in Sources */,
 				D45F050429BAD13A0008E2FB /* TabBarVC.swift in Sources */,
 				D45F052429BAD2DA0008E2FB /* Artist.swift in Sources */,
+				D4B7469D29C99AD2003734EC /* SettingsModels.swift in Sources */,
 				D45F04EB29BACF910008E2FB /* SceneDelegate.swift in Sources */,
 				D45F050E29BAD20D0008E2FB /* WelcomeVC.swift in Sources */,
 				D45F051029BAD2280008E2FB /* SettingsVC.swift in Sources */,
