@@ -61,15 +61,6 @@ class AuthVC: UIViewController, WKNavigationDelegate {
         // Exchange the code for access token
         
         
-        
-        
-        
-        
-
-        
-        
-        
-        
         guard let code = URLComponents(string: url.absoluteString)?.queryItems?.first(where: {$0.name == "code" })?.value else {return}
         
         print("Hakan Baran")
