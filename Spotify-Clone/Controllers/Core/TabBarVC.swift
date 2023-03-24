@@ -17,6 +17,10 @@ class TabBarVC: UITabBarController {
         let searchVC = UINavigationController(rootViewController: SearchVC())
         let libraryVC = UINavigationController(rootViewController: LibraryVC())
         
+        homeVC.navigationBar.tintColor = .label
+        searchVC.navigationBar.tintColor = .label
+        libraryVC.navigationBar.tintColor = .label
+        
         
         
         
