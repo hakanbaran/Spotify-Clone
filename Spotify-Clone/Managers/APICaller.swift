@@ -27,28 +27,51 @@ final class APICaller {
         createRequest(with: URL(string: Constans.baseAPIURL + "/me"), type: .GET) { baseRequest in
             let task = URLSession.shared.dataTask(with: baseRequest) { data, response, error in
                 guard let data = data, error == nil else {
-                    
                     completion(.failure(APIError.failedToGetData))
                     return
                 }
-                
                 do {
-                    
                     let result = try JSONDecoder().decode(UserProfile.self, from: data)
                     completion(.success(result))
-                    
                 } catch {
                     print(error.localizedDescription)
                     completion(.failure(error))
                 }
+            }
+            task.resume()
+        }
+    }
+    
+    
+    public func getNewReleases(completion: @escaping(Result <NewReleasesResponse, Error>) -> Void) {
+        
+        createRequest(with: URL(string: Constans.baseAPIURL + "/browse/new-releases?limit=50"), type: .GET) { request in
+            
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                
+                guard let data = data, error == nil else {return}
+                
+                do {
+                    let result = try JSONDecoder().decode(NewReleasesResponse.self, from: data)
+                    completion(.success(result))
+                    
+                    
+                } catch {
+                    print(error.localizedDescription)
+                }
+                
+                
                 
                 
             }
-            
             task.resume()
+            
+            
+            
         }
         
     }
+    
     
     // MARK: - Private
     

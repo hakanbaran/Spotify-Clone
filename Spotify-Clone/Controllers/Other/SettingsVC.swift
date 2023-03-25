@@ -67,9 +67,6 @@ class SettingsVC: UIViewController {
         
         
     }
-    
-
-
 }
 
 extension SettingsVC: UITableViewDelegate, UITableViewDataSource {

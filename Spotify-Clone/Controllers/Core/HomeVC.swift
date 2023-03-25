@@ -14,8 +14,17 @@ class HomeVC: UIViewController {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTabSettings))
         
+        fetchData()
         
-        
+    }
+    
+    func fetchData() {
+        APICaller.shared.getNewReleases { result in
+            switch result {
+            case .success(let model): break
+            case .failure(let error): break
+            }
+        }
     }
     
     
