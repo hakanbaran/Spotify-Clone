@@ -26,7 +26,5 @@ struct Album: Codable {
     let images: [APIImage]
     let total_tracks: Int
     let artists: [Artist]
-    
-    
 }
 

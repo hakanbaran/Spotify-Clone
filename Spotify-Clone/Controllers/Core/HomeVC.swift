@@ -15,11 +15,30 @@ class HomeVC: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTabSettings))
         
         fetchData()
+        fetchPlaylists()
+        fetchRecommendations()
         
     }
     
     func fetchData() {
         APICaller.shared.getNewReleases { result in
+            switch result {
+            case .success(let model): break
+            case .failure(let error): break
+            }
+        }
+    }
+    
+    func fetchPlaylists() {
+        APICaller.shared.getFeaturedPlaylists { result in
+            switch result {
+            case .success(let model): break
+            case .failure(let error): break
+            }
+        }
+    }
+    func fetchRecommendations () {
+        APICaller.shared.getRecommendations { result in
             switch result {
             case .success(let model): break
             case .failure(let error): break
