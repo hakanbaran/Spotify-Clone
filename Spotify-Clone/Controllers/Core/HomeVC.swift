@@ -20,6 +20,7 @@ class HomeVC: UIViewController {
     }
     
     func fetchData() {
+        // Featured Playlists, Recommended Tracks, New Releases...
         APICaller.shared.getRecommendedGenres { result in
             switch result {
             case .success(let model):
