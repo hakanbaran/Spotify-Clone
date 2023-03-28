@@ -84,15 +84,38 @@ final class APICaller {
         }
     }
     
-    public func getRecommendations(complation: @escaping(Result <String, Error>) -> Void) {
+    public func getRecommendations(genres: Set<String>, complation: @escaping(Result <String, Error>) -> Void) {
         
-        createRequest(with: URL(string: Constans.baseAPIURL + "/recommendations"), type: .GET) { request in
+        let seeds = genres.joined(separator: ",")
+
+        createRequest(with: URL(string: Constans.baseAPIURL + "/recommendations?seed_genres=\(seeds)"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {return}
+
+                do {
+                    let result = try JSONSerialization.jsonObject(with: data)
+                    print(result)
+
+                }catch {
+                    print(error.localizedDescription)
+                }
+
+            }
+            task.resume()
+        }
+
+    }
+    
+    public func getRecommendedGenres(complation: @escaping(Result <RecommendedGenresResponse, Error>) -> Void) {
+        
+        createRequest(with: URL(string: Constans.baseAPIURL + "/recommendations/available-genre-seeds"), type: .GET) { request in
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, error == nil else {return}
                 
                 do {
-                    let result = try JSONSerialization.jsonObject(with: data)
-                    print(result)
+                    let result = try JSONDecoder().decode(RecommendedGenresResponse.self, from: data)
+                    complation(.success(result))
+//                    print(result)
                     
                 }catch {
                     print(error.localizedDescription)
