@@ -10,15 +10,31 @@ import UIKit
 class HomeVC: UIViewController {
     
     private var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection in
-        return Self.createSectionLayout(section: sectionIndex)
+        return HomeVC.createSectionLayout(section: sectionIndex)
     })
+    
+    private let spinner: UIActivityIndicatorView = {
+        
+        let spinner = UIActivityIndicatorView()
+        spinner.tintColor = .label
+        spinner.hidesWhenStopped = true
+        return spinner
+        
+    }()
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTabSettings))
+        title = "Browse"
+        
+        
+        
         
         configureCollectionView()
+        view.addSubview(spinner)
         fetchData()
     }
     
@@ -43,14 +59,16 @@ class HomeVC: UIViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth((1.0)), heightDimension: .fractionalHeight(1.0)))
         
+        item.contentInsets = NSDirectionalEdgeInsets(top: 2, leading: 2, bottom: 2, trailing: 2)
+        
         // Group
         
-        let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(120)), repeatingSubitem: item, count: 1)
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(120)), repeatingSubitem: item, count: 1)
         
         // Section
         
         let section = NSCollectionLayoutSection(group: group)
-        
+        section.orthogonalScrollingBehavior = .continuous
         return section
         
     }
@@ -61,7 +79,10 @@ class HomeVC: UIViewController {
     
     
     func fetchData() {
-        // Featured Playlists, Recommended Tracks, New Releases...
+        // Featured Playlists...
+        //Recommended Tracks...
+        //New Releases...
+        
         APICaller.shared.getRecommendedGenres { result in
             switch result {
             case .success(let model):
