@@ -8,7 +8,7 @@
 import UIKit
 
 enum BrowseSectionType {
-    case newReleases // 1
+    case newReleases(viewModels: [NewReleasesCellViewModel]) // 1
     case featuredPlaylists // 2
     case recommendedTracks  // 3
 }
@@ -28,6 +28,8 @@ class HomeVC: UIViewController {
         return spinner
         
     }()
+    
+    private var section = [BrowseSectionType]()
     
     
 
@@ -56,6 +58,9 @@ class HomeVC: UIViewController {
     private func configureCollectionView() {
         view.addSubview(collectionView)
         collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(NewReleaseCollectionViewCell.self, forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier)
+        collectionView.register(FeaturedPlaylistCollectionViewCell.self, forCellWithReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier)
+        collectionView.register(RecomendedTrackCollectionViewCell.self, forCellWithReuseIdentifier: RecomendedTrackCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -167,10 +172,6 @@ class HomeVC: UIViewController {
     }
     
     
-    
-    
-    
-    
     @objc func didTabSettings() {
         
         let vc = SettingsVC()
@@ -178,12 +179,7 @@ class HomeVC: UIViewController {
         vc.navigationItem.largeTitleDisplayMode = .never
         
         navigationController?.pushViewController(vc, animated: true)
-        
-        
-        
     }
-
-
 }
 
 extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {

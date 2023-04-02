@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8FC1D13E7D5C7847548D131F /* Pods_Spotify_Clone.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FBDE98B17668C84B0898FD4C /* Pods_Spotify_Clone.framework */; };
+		D403B52129D84D730057E6EE /* NewReleasesCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D403B52029D84D730057E6EE /* NewReleasesCellViewModel.swift */; };
 		D45F04E929BACF910008E2FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F04E829BACF910008E2FB /* AppDelegate.swift */; };
 		D45F04EB29BACF910008E2FB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F04EA29BACF910008E2FB /* SceneDelegate.swift */; };
 		D45F04ED29BACF910008E2FB /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45F04EC29BACF910008E2FB /* HomeVC.swift */; };
@@ -46,6 +47,7 @@
 /* Begin PBXFileReference section */
 		2663691DC16E4794671408BB /* Pods-Spotify-Clone.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify-Clone.debug.xcconfig"; path = "Target Support Files/Pods-Spotify-Clone/Pods-Spotify-Clone.debug.xcconfig"; sourceTree = "<group>"; };
 		36DA7E2A43683045C4A74778 /* Pods-Spotify-Clone.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Spotify-Clone.release.xcconfig"; path = "Target Support Files/Pods-Spotify-Clone/Pods-Spotify-Clone.release.xcconfig"; sourceTree = "<group>"; };
+		D403B52029D84D730057E6EE /* NewReleasesCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesCellViewModel.swift; sourceTree = "<group>"; };
 		D45F04E529BACF910008E2FB /* Spotify-Clone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Spotify-Clone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D45F04E829BACF910008E2FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D45F04EA29BACF910008E2FB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -184,6 +186,7 @@
 		D45F04FF29BAD0E80008E2FB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D403B52029D84D730057E6EE /* NewReleasesCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				D45F051229BAD2380008E2FB /* ProfileVC.swift in Sources */,
 				D45F052029BAD2C20008E2FB /* Playlist.swift in Sources */,
 				D45F051A29BAD28E0008E2FB /* AuthManager.swift in Sources */,
+				D403B52129D84D730057E6EE /* NewReleasesCellViewModel.swift in Sources */,
 				D45F04ED29BACF910008E2FB /* HomeVC.swift in Sources */,
 				D4EA9D2329CE8A280072132D /* APIImage.swift in Sources */,
 				D47D245C29D84B6D00216DEA /* RecomendedTrackCollectionViewCell.swift in Sources */,
