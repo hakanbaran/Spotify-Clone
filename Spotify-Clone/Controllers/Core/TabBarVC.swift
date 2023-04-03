@@ -12,7 +12,6 @@ class TabBarVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         let homeVC = UINavigationController(rootViewController: HomeVC())
         let searchVC = UINavigationController(rootViewController: SearchVC())
         let libraryVC = UINavigationController(rootViewController: LibraryVC())
@@ -20,10 +19,6 @@ class TabBarVC: UITabBarController {
         homeVC.navigationBar.tintColor = .label
         searchVC.navigationBar.tintColor = .label
         libraryVC.navigationBar.tintColor = .label
-        
-        
-        
-        
         
         homeVC.tabBarItem.image = UIImage(systemName: "house")
         searchVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
@@ -33,13 +28,8 @@ class TabBarVC: UITabBarController {
         searchVC.title = "Search"
         libraryVC.title = "Library"
        
-        
         setViewControllers([homeVC, searchVC, libraryVC], animated: true)
         
         
     }
-    
-
-    
-
 }

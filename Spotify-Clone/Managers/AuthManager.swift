@@ -27,11 +27,8 @@ final class AuthManager {
     
     public var signInURL: URL? {
         
-        
-        
         let urlString = "\(Constants.baseURL)?response_type=code&client_id=\(Constants.clientID)&scope=\(Constants.scopes)&redirect_uri=\(Constants.redirectURI)&show_dialog=TRUE"
 
-        
         return URL(string: urlString)
         
         

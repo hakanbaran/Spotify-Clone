@@ -9,8 +9,8 @@ import UIKit
 
 enum BrowseSectionType {
     case newReleases(viewModels: [NewReleasesCellViewModel]) // 1
-    case featuredPlaylists // 2
-    case recommendedTracks  // 3
+    case featuredPlaylists(viewModels: [NewReleasesCellViewModel]) // 2
+    case recommendedTracks(viewModels: [NewReleasesCellViewModel])  // 3
 }
 
 
@@ -57,10 +57,14 @@ class HomeVC: UIViewController {
     
     private func configureCollectionView() {
         view.addSubview(collectionView)
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.register(NewReleaseCollectionViewCell.self, forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier)
-        collectionView.register(FeaturedPlaylistCollectionViewCell.self, forCellWithReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier)
-        collectionView.register(RecomendedTrackCollectionViewCell.self, forCellWithReuseIdentifier: RecomendedTrackCollectionViewCell.identifier)
+        collectionView.register(UICollectionViewCell.self,
+                                forCellWithReuseIdentifier: "cell")
+        collectionView.register(NewReleaseCollectionViewCell.self,
+                                forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier)
+        collectionView.register(FeaturedPlaylistCollectionViewCell.self,
+                                forCellWithReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier)
+        collectionView.register(RecomendedTrackCollectionViewCell.self,
+                                forCellWithReuseIdentifier: RecomendedTrackCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -169,6 +173,9 @@ class HomeVC: UIViewController {
             case .failure(let error): break
             }
         }
+        section.append(.recommendedTracks(viewModels: []))
+        section.append(.featuredPlaylists(viewModels: []))
+        section.append(.newReleases(viewModels: []))
     }
     
     
@@ -189,7 +196,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 3
+        return section.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
