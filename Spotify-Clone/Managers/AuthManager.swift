@@ -10,8 +10,8 @@ import Foundation
 final class AuthManager {
     
     struct Constants {
-        static let clientID = "Enter ClientID"
-        static let clientSecret = "Enter ClientSecret"
+        static let clientID = "Enter clientID"
+        static let clientSecret = "Enter clientSecret"
         
         static let baseURL = "https://accounts.spotify.com/authorize"
         static let redirectURI = "https://github.com/hakanbaran"

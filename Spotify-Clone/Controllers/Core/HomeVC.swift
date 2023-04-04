@@ -303,7 +303,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NewReleaseCollectionViewCell.identifier, for: indexPath) as?  NewReleaseCollectionViewCell else {return NewReleaseCollectionViewCell()}
             
             let viewModel = viewModels[indexPath.row]
-            cell.backgroundColor = .red
+            cell.configure(with: viewModel)
             return cell
             
         case .featuredPlaylists(let viewModels):
