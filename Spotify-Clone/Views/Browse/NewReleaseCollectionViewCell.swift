@@ -27,21 +27,21 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
     
     private let albumNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 22, weight: .semibold)
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.numberOfLines = 0
         return label
     }()
     
     private let numberOfTracksLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .light)
+        label.font = .systemFont(ofSize: 18, weight: .thin)
         label.numberOfLines = 0
         return label
     }()
     
     private let artistNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 18, weight: .regular)
+        label.font = .systemFont(ofSize: 18, weight: .light)
         label.numberOfLines = 0
         return label
     }()
@@ -77,12 +77,13 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
         
         albumCoverImageView.frame = CGRect(x: 5, y: 5, width: imageSize, height: imageSize)
         
+        let albumlabelHeight = min(60, albumLabelSize.height)
         
-        albumNameLabel.frame = CGRect(x: albumCoverImageView.right+10, y: 5, width: contentView.width-albumCoverImageView.right-5, height: min(80, albumLabelSize.height))
+        albumNameLabel.frame = CGRect(x: albumCoverImageView.right+10, y: 5, width: albumLabelSize.width, height: albumlabelHeight)
         
-        artistNameLabel.frame = CGRect(x: albumCoverImageView.right+10, y: albumNameLabel.bottom+5, width: albumLabelSize.width, height: min(80, albumLabelSize.height))
+        artistNameLabel.frame = CGRect(x: albumCoverImageView.right+10, y: albumNameLabel.bottom, width: contentView.width-albumCoverImageView.right-10, height: 30)
         
-        numberOfTracksLabel.frame = CGRect(x: albumCoverImageView.right+10, y: contentView.bottom-44, width: numberOfTracksLabel.width, height: 50)
+        numberOfTracksLabel.frame = CGRect(x: albumCoverImageView.right+10, y: contentView.bottom-44, width: numberOfTracksLabel.width, height: 44)
         
     }
     
