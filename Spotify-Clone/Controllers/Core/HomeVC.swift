@@ -9,8 +9,8 @@ import UIKit
 
 enum BrowseSectionType {
     case newReleases(viewModels: [NewReleasesCellViewModel]) // 1
-    case featuredPlaylists(viewModels: [NewReleasesCellViewModel]) // 2
-    case recommendedTracks(viewModels: [NewReleasesCellViewModel])  // 3
+    case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel]) // 2
+    case recommendedTracks(viewModels: [RecommendedTrackCellViewModel])  // 3
 }
 
 
@@ -253,8 +253,17 @@ class HomeVC: UIViewController {
         
         
         
-        sections.append(.recommendedTracks(viewModels: []))
-        sections.append(.featuredPlaylists(viewModels: []))
+        sections.append(.featuredPlaylists(viewModels: playlists.compactMap({
+            return FeaturedPlaylistCellViewModel(name: $0.name, artworkURL: URL(string: $0.images.first?.url ?? ""), creatorName: $0.owner.display_name)
+        })))
+        
+        
+        
+        
+        
+        sections.append(.recommendedTracks(viewModels: tracks.compactMap({
+            return RecommendedTrackCellViewModel(name: $0.name, artistName: $0.artists.first?.name ?? "", artworkURL: URL(string: $0.album.images.first?.url ?? ""))
+        })))
         collectionView.reloadData()
         
     }
@@ -309,14 +318,15 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
         case .featuredPlaylists(let viewModels):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier, for: indexPath) as?  FeaturedPlaylistCollectionViewCell else {return FeaturedPlaylistCollectionViewCell()}
             
-            cell.backgroundColor = .yellow
+            cell.configure(with: viewModels[indexPath.row])
+            
             return cell
             
         case .recommendedTracks(let viewModels):
             
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecomendedTrackCollectionViewCell.identifier, for: indexPath) as?  RecomendedTrackCollectionViewCell else {return RecomendedTrackCollectionViewCell()}
             
-            cell.backgroundColor = .green
+            cell.configure(with: viewModels[indexPath.row])
             return cell
             
         }

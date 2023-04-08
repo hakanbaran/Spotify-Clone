@@ -10,13 +10,7 @@ import SDWebImage
 
 class NewReleaseCollectionViewCell: UICollectionViewCell {
     
-    
-//    struct NewReleasesCellViewModel {
-//        let name: String?
-//        let artworkURL: URL?
-//        let numberOfTracks: Int?
-//        let artistName: String?
-//    }
+
     
     private let albumCoverImageView: UIImageView = {
         let imageView = UIImageView()
