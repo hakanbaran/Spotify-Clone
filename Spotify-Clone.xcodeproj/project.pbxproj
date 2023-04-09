@@ -46,6 +46,7 @@
 		D4EA9D2329CE8A280072132D /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EA9D2229CE8A280072132D /* APIImage.swift */; };
 		D4EACEB929E3367600F10118 /* AlbumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEB829E3367600F10118 /* AlbumVC.swift */; };
 		D4EACEBB29E3506F00F10118 /* AlbumDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */; };
+		D4EACEBD29E35D3400F10118 /* PlaylistDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +93,7 @@
 		D4EA9D2229CE8A280072132D /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		D4EACEB829E3367600F10118 /* AlbumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumVC.swift; sourceTree = "<group>"; };
 		D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsResponse.swift; sourceTree = "<group>"; };
+		D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +182,7 @@
 				D47D244F29D32D6100216DEA /* RecommendedGenresResponse.swift */,
 				D47D245129D387B200216DEA /* RecommendationsResponse.swift */,
 				D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */,
+				D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -374,6 +377,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D45F051229BAD2380008E2FB /* ProfileVC.swift in Sources */,
+				D4EACEBD29E35D3400F10118 /* PlaylistDetailsResponse.swift in Sources */,
 				D45F052029BAD2C20008E2FB /* Playlist.swift in Sources */,
 				D45F051A29BAD28E0008E2FB /* AuthManager.swift in Sources */,
 				D403B52129D84D730057E6EE /* NewReleasesCellViewModel.swift in Sources */,

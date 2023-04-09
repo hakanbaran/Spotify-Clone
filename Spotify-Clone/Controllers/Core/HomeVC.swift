@@ -85,7 +85,17 @@ class HomeVC: UIViewController {
         switch section {
             
         case .featuredPlaylists:
-            break
+            
+            let playlist = playlists[indexPath.row]
+            let vc = PlaylistVC(playlist: playlist)
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+            
+            
+            
+            
+            
+            
         case .newReleases:
             let album = newAlbums[indexPath.row]
             let vc = AlbumVC(album: album)
@@ -298,7 +308,7 @@ class HomeVC: UIViewController {
         
         
         sections.append(.recommendedTracks(viewModels: tracks.compactMap({
-            return RecommendedTrackCellViewModel(name: $0.name, artistName: $0.artists.first?.name ?? "", artworkURL: URL(string: $0.album?.images.first?.url ?? ""))
+            return RecommendedTrackCellViewModel(name: $0.name, artistName: $0.artists?.first?.name ?? "", artworkURL: URL(string: $0.album?.images.first?.url ?? ""))
         })))
         collectionView.reloadData()
         
