@@ -92,7 +92,7 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
     
     func configure(with viewModel: NewReleasesCellViewModel) {
         
-        albumNameLabel.text = viewModel.artistName
+        albumNameLabel.text = viewModel.name
         artistNameLabel.text = viewModel.artistName
         numberOfTracksLabel.text = "Tracks: \(viewModel.numberOfTracks ?? 0)"
         albumCoverImageView.sd_setImage(with: viewModel.artworkURL)

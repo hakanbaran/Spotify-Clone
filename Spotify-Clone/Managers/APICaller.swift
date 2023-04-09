@@ -21,6 +21,39 @@ final class APICaller {
         case failedToGetData
     }
     
+    // MARK: - Albums
+    
+    public func getAlbumDetails(for album: Album, completion: @escaping (Result<AlbumDetailsResponse, Error>) -> Void) {
+        
+        createRequest(with: URL(string: Constans.baseAPIURL + "/albums/" + album.id), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(AlbumDetailsResponse.self, from: data)
+                    completion(.success(result))
+                    print(result)
+                    
+                }catch {
+                    print(error.localizedDescription)
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+            
+        }
+        
+    }
+    
+    
+    
+    // MARK: - Playlists
+    
+    // MARK: - Profile
+    
     public func getCurrentUserProfile(completion: @escaping(Result <UserProfile, Error>) -> Void) {
         
         
@@ -41,6 +74,8 @@ final class APICaller {
             task.resume()
         }
     }
+    
+    // MARK: - Browse
     
     
     public func getNewReleases(completion: @escaping(Result <NewReleasesResponse, Error>) -> Void) {

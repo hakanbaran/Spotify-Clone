@@ -7,6 +7,10 @@
 
 import UIKit
 
+
+
+
+
 enum BrowseSectionType {
     case newReleases(viewModels: [NewReleasesCellViewModel]) // 1
     case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel]) // 2
@@ -15,6 +19,10 @@ enum BrowseSectionType {
 
 
 class HomeVC: UIViewController {
+    
+    private var newAlbums: [Album] = []
+    private var playlists: [Playlist] = []
+    private var tracks: [AudioTrack] = []
     
     private var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection in
         return HomeVC.createSectionLayout(section: sectionIndex)
@@ -67,6 +75,30 @@ class HomeVC: UIViewController {
                                 forCellWithReuseIdentifier: RecomendedTrackCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let section = sections[indexPath.section]
+        
+        switch section {
+            
+        case .featuredPlaylists:
+            break
+        case .newReleases:
+            let album = newAlbums[indexPath.row]
+            let vc = AlbumVC(album: album)
+            vc.title = album.name
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+            
+        case .recommendedTracks:
+            break
+            
+        }
+        
+        
     }
     
     
@@ -246,6 +278,10 @@ class HomeVC: UIViewController {
     
     private func configureModels(newAlbums: [Album], playlists: [Playlist], tracks: [AudioTrack]) {
         
+        self.newAlbums = newAlbums
+        self.playlists = playlists
+        self.tracks = tracks
+        
         
         sections.append(.newReleases(viewModels: newAlbums.compactMap({
             return NewReleasesCellViewModel(name: $0.name, artworkURL: URL(string: $0.images.first?.url ?? ""), numberOfTracks: $0.total_tracks, artistName: $0.artists.first?.name ?? "-")
@@ -262,7 +298,7 @@ class HomeVC: UIViewController {
         
         
         sections.append(.recommendedTracks(viewModels: tracks.compactMap({
-            return RecommendedTrackCellViewModel(name: $0.name, artistName: $0.artists.first?.name ?? "", artworkURL: URL(string: $0.album.images.first?.url ?? ""))
+            return RecommendedTrackCellViewModel(name: $0.name, artistName: $0.artists.first?.name ?? "", artworkURL: URL(string: $0.album?.images.first?.url ?? ""))
         })))
         collectionView.reloadData()
         
