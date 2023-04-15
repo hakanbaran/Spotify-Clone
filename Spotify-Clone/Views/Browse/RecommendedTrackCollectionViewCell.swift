@@ -7,9 +7,9 @@
 
 import UIKit
 
-class RecomendedTrackCollectionViewCell: UICollectionViewCell {
+class RecommendedTrackCollectionViewCell: UICollectionViewCell {
     
-    static let identifier = "RecomendedTrackCollectionViewCell"
+    static let identifier = "RecommendedTrackCollectionViewCell"
     
     
     private let albumCoverImageView: UIImageView = {

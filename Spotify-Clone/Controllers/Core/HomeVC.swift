@@ -8,13 +8,10 @@
 import UIKit
 
 
-
-
-
 enum BrowseSectionType {
-    case newReleases(viewModels: [NewReleasesCellViewModel]) // 1
-    case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel]) // 2
-    case recommendedTracks(viewModels: [RecommendedTrackCellViewModel])  // 3
+    case newReleases(viewModels: [NewReleasesCellViewModel]) // 0
+    case featuredPlaylists(viewModels: [FeaturedPlaylistCellViewModel]) // 1
+    case recommendedTracks(viewModels: [RecommendedTrackCellViewModel])  // 2
 }
 
 
@@ -48,9 +45,6 @@ class HomeVC: UIViewController {
         title = "Browse"
         
         
-        
-        
-        
         configureCollectionView()
         view.addSubview(spinner)
         fetchData()
@@ -71,8 +65,8 @@ class HomeVC: UIViewController {
                                 forCellWithReuseIdentifier: NewReleaseCollectionViewCell.identifier)
         collectionView.register(FeaturedPlaylistCollectionViewCell.self,
                                 forCellWithReuseIdentifier: FeaturedPlaylistCollectionViewCell.identifier)
-        collectionView.register(RecomendedTrackCollectionViewCell.self,
-                                forCellWithReuseIdentifier: RecomendedTrackCollectionViewCell.identifier)
+        collectionView.register(RecommendedTrackCollectionViewCell.self,
+                                forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
     }
@@ -370,7 +364,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource {
             
         case .recommendedTracks(let viewModels):
             
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecomendedTrackCollectionViewCell.identifier, for: indexPath) as?  RecomendedTrackCollectionViewCell else {return RecomendedTrackCollectionViewCell()}
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedTrackCollectionViewCell.identifier, for: indexPath) as?  RecommendedTrackCollectionViewCell else {return RecommendedTrackCollectionViewCell()}
             
             cell.configure(with: viewModels[indexPath.row])
             return cell
