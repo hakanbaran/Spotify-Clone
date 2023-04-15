@@ -8,9 +8,15 @@
 import UIKit
 import SDWebImage
 
+protocol PlaylistHeaderCollectionReusableViewDelegate: AnyObject {
+    func playlistHeaderCollectionReusableViewDidTabPlayAll(_ header: PlaylistHeaderCollectionReusableView)
+}
+
 class PlaylistHeaderCollectionReusableView: UICollectionReusableView {
         
     static let identifier = "PlaylistHeaderCollectionReusableView"
+    
+    weak var delegate: PlaylistHeaderCollectionReusableViewDelegate?
     
     private let nameLabel: UILabel = {
         let label = UILabel()
@@ -73,7 +79,8 @@ class PlaylistHeaderCollectionReusableView: UICollectionReusableView {
     }
     
     @objc func didTapPlayAll() {
-        // Play All
+        delegate?.playlistHeaderCollectionReusableViewDidTabPlayAll(self)
+        
     }
     
     override func layoutSubviews() {
