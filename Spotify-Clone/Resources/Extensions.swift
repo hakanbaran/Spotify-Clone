@@ -52,7 +52,7 @@ extension DateFormatter {
 }
 
 extension String {
-    static func formattedData(string: String) -> String {
+    static func formattedDate(string: String) -> String {
         
         guard let date = DateFormatter.dateFormatter.date(from: string) else {
             return string
