@@ -31,7 +31,7 @@ class AlbumVC: UIViewController {
     }))
     
     
-    private var viewModels = [RecommendedTrackCellViewModel]()
+    private var viewModels = [AlbumCollectionViewCellViewModel]()
     
     init(album: Album) {
         self.album = album
@@ -51,7 +51,7 @@ class AlbumVC: UIViewController {
         
         
         view.addSubview(collectionView)
-        collectionView.register(RecommendedTrackCollectionViewCell.self, forCellWithReuseIdentifier: RecommendedTrackCollectionViewCell.identifier)
+        collectionView.register(AlbumTrackCollectionViewCell.self, forCellWithReuseIdentifier: AlbumTrackCollectionViewCell.identifier)
         collectionView.backgroundColor = .systemBackground
         collectionView.register(PlaylistHeaderCollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: PlaylistHeaderCollectionReusableView.identifier)
         collectionView.delegate = self
@@ -72,7 +72,7 @@ class AlbumVC: UIViewController {
                 case .success(let model):
                     
                     self?.viewModels = model.tracks.items.compactMap({
-                        RecommendedTrackCellViewModel(name: $0.name, artistName: $0.artists?.first?.name ?? "", artworkURL: URL(string: $0.album?.images.first?.url ?? ""))
+                        AlbumCollectionViewCellViewModel(name: $0.name, artistName: $0.artists?.first?.name ?? "")
                     })
                     self?.collectionView.reloadData()
                 case .failure(let error):
@@ -108,7 +108,7 @@ extension AlbumVC: UICollectionViewDelegate, UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RecommendedTrackCollectionViewCell.identifier, for: indexPath) as? RecommendedTrackCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AlbumTrackCollectionViewCell.identifier, for: indexPath) as? AlbumTrackCollectionViewCell else {
             return UICollectionViewCell()
         }
         cell.configure(with: viewModels[indexPath.row])
@@ -120,8 +120,7 @@ extension AlbumVC: UICollectionViewDelegate, UICollectionViewDataSource {
             return UICollectionReusableView()
         }
         
-        
-        let headerViewModel = PlaylistHeaderViewModel(name: album.name, ownerName: album.artists.first?.name ?? "", description: "Release Date: \(album.release_date)", artworkURL: URL(string: album.images.first?.url ?? ""))
+        let headerViewModel = PlaylistHeaderViewModel(name: album.name, ownerName: album.artists.first?.name ?? "", description: "Release Date: \(String.formattedData(string: album.release_date))", artworkURL: URL(string: album.images.first?.url ?? ""))
 
         header.configure(with: headerViewModel)
         header.delegate = self
