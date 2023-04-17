@@ -62,8 +62,6 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
         
         let imageSize: CGFloat = contentView.height - 10
         
-        
-        
         let albumLabelSize = albumNameLabel.sizeThatFits(CGSize(width: contentView.width - imageSize, height: imageSize))
         artistNameLabel.sizeToFit()
         numberOfTracksLabel.sizeToFit()
@@ -96,8 +94,5 @@ class NewReleaseCollectionViewCell: UICollectionViewCell {
         artistNameLabel.text = viewModel.artistName
         numberOfTracksLabel.text = "Tracks: \(viewModel.numberOfTracks ?? 0)"
         albumCoverImageView.sd_setImage(with: viewModel.artworkURL)
-        
-        
     }
-    
 }
