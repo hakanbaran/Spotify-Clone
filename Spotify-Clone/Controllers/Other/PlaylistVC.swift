@@ -26,8 +26,6 @@ class PlaylistVC: UIViewController {
         
         section.boundarySupplementaryItems = [NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)]
         
-        
-        
         return section
         
         
