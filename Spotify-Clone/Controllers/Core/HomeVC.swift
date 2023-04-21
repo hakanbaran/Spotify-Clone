@@ -54,8 +54,8 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "gear"), style: .done, target: self, action: #selector(didTabSettings))
-        title = "Browse"
         
+        navigationItem.rightBarButtonItem?.tintColor = .label
         
         configureCollectionView()
         view.addSubview(spinner)
