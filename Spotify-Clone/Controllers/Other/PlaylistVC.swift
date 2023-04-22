@@ -31,7 +31,6 @@ class PlaylistVC: UIViewController {
         
     }))
     
-    
     init(playlist: Playlist) {
         self.playlist = playlist
         super.init(nibName: nil, bundle: nil)
