@@ -57,6 +57,9 @@ class HomeVC: UIViewController {
         
         navigationItem.rightBarButtonItem?.tintColor = .label
         
+        overrideUserInterfaceStyle = .dark
+        
+        
         configureCollectionView()
         view.addSubview(spinner)
         fetchData()

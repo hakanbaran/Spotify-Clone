@@ -34,6 +34,8 @@ class TabBarVC: UITabBarController {
 //
 //        setViewControllers([homeVC, searchVC, libraryVC], animated: true)
         
+        overrideUserInterfaceStyle = .dark
+        
         let homeVC = HomeVC()
         let searchVC = SearchVC()
         let libraryVC = LibraryVC()

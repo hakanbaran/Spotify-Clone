@@ -55,6 +55,8 @@ class PlaylistVC: UIViewController {
         title = playlist.name
         view.backgroundColor = .systemBackground
         
+        navigationController?.navigationBar.tintColor = .label
+        
         APICaller.shared.getPlaylistDetails(for: playlist) { [weak self] result in
             DispatchQueue.main.async {
                 switch result {

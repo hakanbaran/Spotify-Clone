@@ -29,9 +29,6 @@ class WelcomeVC: UIViewController {
         view.addSubview(signInButton)
         signInButton.addTarget(self, action: #selector(didTabSignIn), for: .touchUpInside)
         
-        
-                
-        
     }
     
     override func viewDidLayoutSubviews() {
