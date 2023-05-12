@@ -52,6 +52,7 @@
 		D4EACEBB29E3506F00F10118 /* AlbumDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */; };
 		D4EACEBD29E35D3400F10118 /* PlaylistDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */; };
 		D4EACEBF29EA937100F10118 /* PlaylistHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBE29EA937100F10118 /* PlaylistHeaderCollectionReusableView.swift */; };
+		D4FF79692A0E47800098D77D /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF79682A0E47800098D77D /* GenreCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -104,6 +105,7 @@
 		D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsResponse.swift; sourceTree = "<group>"; };
 		D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsResponse.swift; sourceTree = "<group>"; };
 		D4EACEBE29EA937100F10118 /* PlaylistHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
+		D4FF79682A0E47800098D77D /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 				D47D245629D84B0700216DEA /* NewReleaseCollectionViewCell.swift */,
 				D47D245829D84B4000216DEA /* FeaturedPlaylistCollectionViewCell.swift */,
 				D47D245B29D84B6D00216DEA /* RecommendedTrackCollectionViewCell.swift */,
+				D4FF79682A0E47800098D77D /* GenreCollectionViewCell.swift */,
 			);
 			path = Browse;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				D45F051E29BAD2AE0008E2FB /* HapticsManager.swift in Sources */,
 				D45F052A29C191130008E2FB /* AuthResponse.swift in Sources */,
 				D4EA9D2129CE81C20072132D /* NewReleasesResponse.swift in Sources */,
+				D4FF79692A0E47800098D77D /* GenreCollectionViewCell.swift in Sources */,
 				D47D245229D387B200216DEA /* RecommendationsResponse.swift in Sources */,
 				D45F052229BAD2CF0008E2FB /* AudioTrack.swift in Sources */,
 				D43E12DB29EDCDC40047B769 /* AlbumTrackCollectionViewCell.swift in Sources */,
