@@ -95,6 +95,18 @@ extension SearchVC: UISearchResultsUpdating {
         
 //        resultsController.update(with: results)
         
+        APICaller.shared.search(with: query) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let results):
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    
+                }
+            }
+        }
+        
         print(query)
         
         

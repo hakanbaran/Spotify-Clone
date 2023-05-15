@@ -227,9 +227,29 @@ final class APICaller {
         }
     }
     
+    // MARK: - Search
     
-    
-    
+    public func search(with query: String, completion: @escaping (Result<[String], Error>) -> Void) {
+        
+        createRequest(with: URL(string: Constans.baseAPIURL+"/search?limit=10&type=album,artist,playlist,track&q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "none")"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONSerialization.jsonObject(with: data)
+                    print(result)
+                } catch {
+                    print(error)
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+        
+    }
     
     // MARK: - Private
     
