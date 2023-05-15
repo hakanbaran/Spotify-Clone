@@ -43,6 +43,9 @@
 		D47D245729D84B0700216DEA /* NewReleaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47D245629D84B0700216DEA /* NewReleaseCollectionViewCell.swift */; };
 		D47D245929D84B4000216DEA /* FeaturedPlaylistCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47D245829D84B4000216DEA /* FeaturedPlaylistCollectionViewCell.swift */; };
 		D47D245C29D84B6D00216DEA /* RecommendedTrackCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D47D245B29D84B6D00216DEA /* RecommendedTrackCollectionViewCell.swift */; };
+		D493B7142A0F99DD008EECE0 /* AllCategoriesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493B7132A0F99DD008EECE0 /* AllCategoriesResponse.swift */; };
+		D493B7162A109BC6008EECE0 /* CategoryCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493B7152A109BC6008EECE0 /* CategoryCollectionViewCellViewModel.swift */; };
+		D493B7182A10EA1A008EECE0 /* CategoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D493B7172A10EA1A008EECE0 /* CategoryVC.swift */; };
 		D4B7469D29C99AD2003734EC /* SettingsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4B7469C29C99AD2003734EC /* SettingsModels.swift */; };
 		D4DC434C29DF5D75009A9AAF /* FeaturedPlaylistCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC434B29DF5D75009A9AAF /* FeaturedPlaylistCellViewModel.swift */; };
 		D4DC434E29DF5DC8009A9AAF /* RecommendedTrackCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DC434D29DF5DC8009A9AAF /* RecommendedTrackCellViewModel.swift */; };
@@ -52,7 +55,7 @@
 		D4EACEBB29E3506F00F10118 /* AlbumDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */; };
 		D4EACEBD29E35D3400F10118 /* PlaylistDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */; };
 		D4EACEBF29EA937100F10118 /* PlaylistHeaderCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEBE29EA937100F10118 /* PlaylistHeaderCollectionReusableView.swift */; };
-		D4FF79692A0E47800098D77D /* GenreCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF79682A0E47800098D77D /* GenreCollectionViewCell.swift */; };
+		D4FF79692A0E47800098D77D /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4FF79682A0E47800098D77D /* CategoryCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -96,6 +99,9 @@
 		D47D245629D84B0700216DEA /* NewReleaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		D47D245829D84B4000216DEA /* FeaturedPlaylistCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistCollectionViewCell.swift; sourceTree = "<group>"; };
 		D47D245B29D84B6D00216DEA /* RecommendedTrackCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCollectionViewCell.swift; sourceTree = "<group>"; };
+		D493B7132A0F99DD008EECE0 /* AllCategoriesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllCategoriesResponse.swift; sourceTree = "<group>"; };
+		D493B7152A109BC6008EECE0 /* CategoryCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		D493B7172A10EA1A008EECE0 /* CategoryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryVC.swift; sourceTree = "<group>"; };
 		D4B7469C29C99AD2003734EC /* SettingsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModels.swift; sourceTree = "<group>"; };
 		D4DC434B29DF5D75009A9AAF /* FeaturedPlaylistCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistCellViewModel.swift; sourceTree = "<group>"; };
 		D4DC434D29DF5DC8009A9AAF /* RecommendedTrackCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedTrackCellViewModel.swift; sourceTree = "<group>"; };
@@ -105,7 +111,7 @@
 		D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsResponse.swift; sourceTree = "<group>"; };
 		D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDetailsResponse.swift; sourceTree = "<group>"; };
 		D4EACEBE29EA937100F10118 /* PlaylistHeaderCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistHeaderCollectionReusableView.swift; sourceTree = "<group>"; };
-		D4FF79682A0E47800098D77D /* GenreCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenreCollectionViewCell.swift; sourceTree = "<group>"; };
+		D4FF79682A0E47800098D77D /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +204,7 @@
 				D47D245129D387B200216DEA /* RecommendationsResponse.swift */,
 				D4EACEBA29E3506F00F10118 /* AlbumDetailsResponse.swift */,
 				D4EACEBC29E35D3400F10118 /* PlaylistDetailsResponse.swift */,
+				D493B7132A0F99DD008EECE0 /* AllCategoriesResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -210,6 +217,7 @@
 				D4DC434D29DF5DC8009A9AAF /* RecommendedTrackCellViewModel.swift */,
 				D43E12D629EB39150047B769 /* PlaylistHeaderViewModel.swift */,
 				D43E12DC29EDD1350047B769 /* AlbumCollectionViewCellViewModel.swift */,
+				D493B7152A109BC6008EECE0 /* CategoryCollectionViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -257,6 +265,7 @@
 				D45F051529BAD25A0008E2FB /* PlaylistVC.swift */,
 				D45F051729BAD26E0008E2FB /* SearchResultVC.swift */,
 				D4EACEB829E3367600F10118 /* AlbumVC.swift */,
+				D493B7172A10EA1A008EECE0 /* CategoryVC.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -267,7 +276,7 @@
 				D47D245629D84B0700216DEA /* NewReleaseCollectionViewCell.swift */,
 				D47D245829D84B4000216DEA /* FeaturedPlaylistCollectionViewCell.swift */,
 				D47D245B29D84B6D00216DEA /* RecommendedTrackCollectionViewCell.swift */,
-				D4FF79682A0E47800098D77D /* GenreCollectionViewCell.swift */,
+				D4FF79682A0E47800098D77D /* CategoryCollectionViewCell.swift */,
 			);
 			path = Browse;
 			sourceTree = "<group>";
@@ -402,6 +411,7 @@
 				D43E12DD29EDD1350047B769 /* AlbumCollectionViewCellViewModel.swift in Sources */,
 				D45F04ED29BACF910008E2FB /* HomeVC.swift in Sources */,
 				D4DC434C29DF5D75009A9AAF /* FeaturedPlaylistCellViewModel.swift in Sources */,
+				D493B7142A0F99DD008EECE0 /* AllCategoriesResponse.swift in Sources */,
 				D43E12D929ED5DA30047B769 /* TitleHeaderCollectionReusableView.swift in Sources */,
 				D4EACEB929E3367600F10118 /* AlbumVC.swift in Sources */,
 				D4EA9D2329CE8A280072132D /* APIImage.swift in Sources */,
@@ -412,7 +422,7 @@
 				D45F051E29BAD2AE0008E2FB /* HapticsManager.swift in Sources */,
 				D45F052A29C191130008E2FB /* AuthResponse.swift in Sources */,
 				D4EA9D2129CE81C20072132D /* NewReleasesResponse.swift in Sources */,
-				D4FF79692A0E47800098D77D /* GenreCollectionViewCell.swift in Sources */,
+				D4FF79692A0E47800098D77D /* CategoryCollectionViewCell.swift in Sources */,
 				D47D245229D387B200216DEA /* RecommendationsResponse.swift in Sources */,
 				D45F052229BAD2CF0008E2FB /* AudioTrack.swift in Sources */,
 				D43E12DB29EDCDC40047B769 /* AlbumTrackCollectionViewCell.swift in Sources */,
@@ -429,6 +439,7 @@
 				D45F052429BAD2DA0008E2FB /* Artist.swift in Sources */,
 				D4B7469D29C99AD2003734EC /* SettingsModels.swift in Sources */,
 				D43E12D729EB39150047B769 /* PlaylistHeaderViewModel.swift in Sources */,
+				D493B7182A10EA1A008EECE0 /* CategoryVC.swift in Sources */,
 				D45F04EB29BACF910008E2FB /* SceneDelegate.swift in Sources */,
 				D45F050E29BAD20D0008E2FB /* WelcomeVC.swift in Sources */,
 				D45F051029BAD2280008E2FB /* SettingsVC.swift in Sources */,
@@ -436,6 +447,7 @@
 				D45F051C29BAD29A0008E2FB /* APICaller.swift in Sources */,
 				D47D244E29D3076300216DEA /* FeaturedPlaylistsResponse.swift in Sources */,
 				D45F051429BAD24B0008E2FB /* PlayerVC.swift in Sources */,
+				D493B7162A109BC6008EECE0 /* CategoryCollectionViewCellViewModel.swift in Sources */,
 				D47D245029D32D6100216DEA /* RecommendedGenresResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,7 +596,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -614,7 +626,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

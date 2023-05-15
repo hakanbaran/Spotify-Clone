@@ -34,6 +34,8 @@ class HomeVC: UIViewController {
     private var tracks: [AudioTrack] = []
     
     private var collectionView: UICollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewCompositionalLayout { sectionIndex, _ -> NSCollectionLayoutSection in
+        
+        
         return HomeVC.createSectionLayout(section: sectionIndex)
     })
     
@@ -148,6 +150,8 @@ class HomeVC: UIViewController {
             // Vertical group in horizontal group
             
             let verticalGroup = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(390)), subitem: item, count: 3)
+            
+            
             
             let horizontalGroup = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.9), heightDimension: .absolute(390)), subitem: verticalGroup, count: 1)
             

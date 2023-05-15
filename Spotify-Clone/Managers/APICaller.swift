@@ -185,6 +185,49 @@ final class APICaller {
     }
     
     
+    // MARK: - Category
+    
+    public func getCategory(complation: @escaping(Result <[Category], Error>) -> Void) {
+        
+        createRequest(with: URL(string: Constans.baseAPIURL + "/browse/categories?limit=50"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    complation(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(AllCategoriesResponse.self, from: data)
+                    complation(.success(result.categories.items))
+//                    print(result.categories.items)
+                }catch {
+                    complation(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    public func getCategoryPlaylists(category: Category, complation: @escaping(Result <[Playlist], Error>) -> Void) {
+        
+        createRequest(with: URL(string: Constans.baseAPIURL + "/browse/categories/\(category.id)/playlists?limit=20"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {return}
+                
+                do {
+                    let result = try JSONDecoder().decode(CategoryPlaylistsResponse.self, from: data)
+                    let playlists = result.playlists.items
+                    complation(.success(playlists))
+                }catch {
+                    print(error.localizedDescription)
+                    complation(.failure(error))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    
     
     
     

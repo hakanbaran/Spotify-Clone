@@ -11,29 +11,7 @@ class TabBarVC: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let homeVC = UINavigationController(rootViewController: HomeVC())
-//        let searchVC = UINavigationController(rootViewController: SearchVC())
-//        let libraryVC = UINavigationController(rootViewController: LibraryVC())
-//
-//        homeVC.title = "Home"
-//        searchVC.title = "Search"
-//        libraryVC.title = "Library"
-//
-//        homeVC.navigationBar.tintColor = .label
-//        searchVC.navigationBar.tintColor = .label
-//        libraryVC.navigationBar.tintColor = .label
-//
-//        homeVC.tabBarItem.image = UIImage(systemName: "house")
-//        searchVC.tabBarItem.image = UIImage(systemName: "magnifyingglass")
-//        libraryVC.tabBarItem.image = UIImage(systemName: "music.note.list")
-//
-//
-//
-//        homeVC.navigationItem.largeTitleDisplayMode = .always
-//
-//        setViewControllers([homeVC, searchVC, libraryVC], animated: true)
-        
+      
         overrideUserInterfaceStyle = .dark
         
         let homeVC = HomeVC()
@@ -62,9 +40,5 @@ class TabBarVC: UITabBarController {
         navLibrary.navigationBar.prefersLargeTitles = true
         
         setViewControllers([navHome, navSearch, navLibrary], animated: true)
-        
-        
     }
 }
-
-

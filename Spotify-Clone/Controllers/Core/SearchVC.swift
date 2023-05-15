@@ -9,6 +9,8 @@ import UIKit
 
 class SearchVC: UIViewController {
     
+    private var categoryList : [Category] = []
+    
     let searchController: UISearchController = {
         let results = UIViewController()
         results.view.backgroundColor = .red
@@ -27,7 +29,9 @@ class SearchVC: UIViewController {
         
         
         //MARK: - COLLECTION VIEW 2 ADET SUTUN YAPILDI(HER SATIR BIR GRUP)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150)), subitem: item, count: 2)
+//        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(150)), subitem: item, count: 2)
+        
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .absolute(140)), repeatingSubitem: item, count: 2)
         
         
         //MARK: - GRUPLAR ARASI BOSLUK
@@ -50,10 +54,25 @@ class SearchVC: UIViewController {
         navigationItem.searchController = searchController
         searchController.searchResultsUpdater = self
         view.addSubview(collectionView)
-        collectionView.register(GenreCollectionViewCell.self, forCellWithReuseIdentifier: GenreCollectionViewCell.identifier)
+        collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .systemBackground
+        
+        APICaller.shared.getCategory {  [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let categories):
+//                    let first = categories.first!
+                    self?.categoryList = categories
+                    self?.collectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        
+        
         
     }
     
@@ -94,15 +113,28 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return categoryList.count
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenreCollectionViewCell.identifier, for: indexPath) as? GenreCollectionViewCell else {return UICollectionViewCell()}
-        cell.configure(with: "Rock")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CategoryCollectionViewCell.identifier, for: indexPath) as? CategoryCollectionViewCell else {return UICollectionViewCell()}
+        
+        let category = categoryList[indexPath.row]
+        
+        
+        cell.configure(with: CategoryCollectionViewCellViewModel(title: category.name, artworkURL: URL(string: category.icons.first?.url ?? "")))
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: true)
+        let category = categoryList[indexPath.row]
+        let vc = CategoryVC(category: category)
+        
+        vc.navigationItem.largeTitleDisplayMode = .never
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
