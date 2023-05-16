@@ -229,9 +229,9 @@ final class APICaller {
     
     // MARK: - Search
     
-    public func search(with query: String, completion: @escaping (Result<[String], Error>) -> Void) {
+    public func search(with query: String, completion: @escaping (Result<[SearchResult], Error>) -> Void) {
         
-        createRequest(with: URL(string: Constans.baseAPIURL+"/search?limit=10&type=album,artist,playlist,track&q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "none")"), type: .GET) { request in
+        createRequest(with: URL(string: Constans.baseAPIURL+"/search?limit=1&type=album,artist,playlist,track&q=\(query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? "")"), type: .GET) { request in
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, error == nil else {
                     completion(.failure(APIError.failedToGetData))
@@ -239,10 +239,15 @@ final class APICaller {
                 }
                 
                 do {
-                    let result = try JSONSerialization.jsonObject(with: data)
-                    print(result)
+                    let result = try JSONDecoder().decode(SearchResultResponse.self, from: data)
+                    var searchResults: [SearchResult] = []
+                    searchResults.append(contentsOf: result.tracks.items.compactMap({ .track(model: $0)}))
+                    searchResults.append(contentsOf: result.albums.items.compactMap({ .album(model: $0)}))
+                    searchResults.append(contentsOf: result.playlists.items.compactMap({ .playlist(model: $0)}))
+                    searchResults.append(contentsOf: result.artists.items.compactMap({ .artist(model: $0)}))
+                    print(searchResults)
+                    completion(.success(searchResults))
                 } catch {
-                    print(error)
                     completion(.failure(error))
                 }
             }
@@ -250,6 +255,8 @@ final class APICaller {
         }
         
     }
+    
+    
     
     // MARK: - Private
     
@@ -287,3 +294,5 @@ final class APICaller {
     
     
 }
+
+

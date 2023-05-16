@@ -7,13 +7,13 @@
 
 import UIKit
 
-class SearchVC: UIViewController {
+class SearchVC: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
     private var categoryList : [Category] = []
     
     let searchController: UISearchController = {
-        let results = UIViewController()
-        results.view.backgroundColor = .red
+        let results = SearchResultVC()
+        results.view.backgroundColor = .systemBackground
         let vc = UISearchController(searchResultsController: results)
         vc.searchBar.placeholder = "Songs, Artists, Albums"
         vc.searchBar.searchBarStyle = .minimal
@@ -51,8 +51,9 @@ class SearchVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        navigationItem.searchController = searchController
+        searchController.searchBar.delegate = self
         searchController.searchResultsUpdater = self
+        navigationItem.searchController = searchController
         view.addSubview(collectionView)
         collectionView.register(CategoryCollectionViewCell.self, forCellWithReuseIdentifier: CategoryCollectionViewCell.identifier)
         collectionView.delegate = self
@@ -85,38 +86,40 @@ class SearchVC: UIViewController {
     
     
     
-    
-}
-
-extension SearchVC: UISearchResultsUpdating {
     func updateSearchResults(for searchController: UISearchController) {
-        
-        guard let query = searchController.searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {return}
-        
-//        resultsController.update(with: results)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let resultController = searchController.searchResultsController as? SearchResultVC, let query = searchController.searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {
+            return
+        }
         
         APICaller.shared.search(with: query) { result in
             DispatchQueue.main.async {
                 switch result {
+                
                 case .success(let results):
-                    break
+                    resultController.update(with: results)
+                    
+                    
+                    
                 case .failure(let error):
                     print(error.localizedDescription)
-                    
                 }
             }
         }
-        
-        print(query)
-        
-        
-        // Perform Search
-//        APICaller.shared.search
-        
     }
     
     
+    
+    
+    
 }
+
+
+    
+    
+//}
 extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
