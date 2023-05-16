@@ -94,6 +94,9 @@ class SearchVC: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
             return
         }
         
+        
+        resultController.delegate = self
+        
         APICaller.shared.search(with: query) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -109,11 +112,26 @@ class SearchVC: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
             }
         }
     }
-    
-    
-    
-    
-    
+     
+}
+
+extension SearchVC: SearchResultVCDelegate {
+    func didTapResult(_ result: SearchResult) {
+        switch result {
+        case .artist(let model):
+            break
+        case .album(model: let model):
+            let vc = AlbumVC(album: model)
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+        case .track(model: let model):
+            break
+        case .playlist(model: let model):
+            let vc = PlaylistVC(playlist: model)
+            vc.navigationItem.largeTitleDisplayMode = .never
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
 }
 
 
