@@ -245,7 +245,7 @@ final class APICaller {
                     searchResults.append(contentsOf: result.albums.items.compactMap({ .album(model: $0)}))
                     searchResults.append(contentsOf: result.playlists.items.compactMap({ .playlist(model: $0)}))
                     searchResults.append(contentsOf: result.artists.items.compactMap({ .artist(model: $0)}))
-                    print(searchResults)
+//                    print(searchResults)
                     completion(.success(searchResults))
                 } catch {
                     completion(.failure(error))
