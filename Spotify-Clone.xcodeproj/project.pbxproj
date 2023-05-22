@@ -53,6 +53,8 @@
 		D4DCE1222A12DFAC002A52FD /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCE1212A12DFAC002A52FD /* SearchResult.swift */; };
 		D4DCE1252A140976002A52FD /* SearchResultDefaultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCE1242A140976002A52FD /* SearchResultDefaultTableViewCell.swift */; };
 		D4DCE1272A140CC9002A52FD /* SearchResultDefaultTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCE1262A140CC9002A52FD /* SearchResultDefaultTableViewCellViewModel.swift */; };
+		D4DCE1292A1BEECC002A52FD /* SearchResultSubTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCE1282A1BEECC002A52FD /* SearchResultSubTitleTableViewCell.swift */; };
+		D4DCE12B2A1BF042002A52FD /* SearchResultSubtitleTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4DCE12A2A1BF042002A52FD /* SearchResultSubtitleTableViewCellViewModel.swift */; };
 		D4EA9D2129CE81C20072132D /* NewReleasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EA9D2029CE81C20072132D /* NewReleasesResponse.swift */; };
 		D4EA9D2329CE8A280072132D /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EA9D2229CE8A280072132D /* APIImage.swift */; };
 		D4EACEB929E3367600F10118 /* AlbumVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4EACEB829E3367600F10118 /* AlbumVC.swift */; };
@@ -113,6 +115,8 @@
 		D4DCE1212A12DFAC002A52FD /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		D4DCE1242A140976002A52FD /* SearchResultDefaultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDefaultTableViewCell.swift; sourceTree = "<group>"; };
 		D4DCE1262A140CC9002A52FD /* SearchResultDefaultTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultDefaultTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		D4DCE1282A1BEECC002A52FD /* SearchResultSubTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubTitleTableViewCell.swift; sourceTree = "<group>"; };
+		D4DCE12A2A1BF042002A52FD /* SearchResultSubtitleTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultSubtitleTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		D4EA9D2029CE81C20072132D /* NewReleasesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesResponse.swift; sourceTree = "<group>"; };
 		D4EA9D2229CE8A280072132D /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		D4EACEB829E3367600F10118 /* AlbumVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumVC.swift; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 				D43E12DC29EDD1350047B769 /* AlbumCollectionViewCellViewModel.swift */,
 				D493B7152A109BC6008EECE0 /* CategoryCollectionViewCellViewModel.swift */,
 				D4DCE1262A140CC9002A52FD /* SearchResultDefaultTableViewCellViewModel.swift */,
+				D4DCE12A2A1BF042002A52FD /* SearchResultSubtitleTableViewCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -297,6 +302,7 @@
 			isa = PBXGroup;
 			children = (
 				D4DCE1242A140976002A52FD /* SearchResultDefaultTableViewCell.swift */,
+				D4DCE1282A1BEECC002A52FD /* SearchResultSubTitleTableViewCell.swift */,
 			);
 			path = SearchResultCells;
 			sourceTree = "<group>";
@@ -438,6 +444,7 @@
 				D4EA9D2329CE8A280072132D /* APIImage.swift in Sources */,
 				D47D245C29D84B6D00216DEA /* RecommendedTrackCollectionViewCell.swift in Sources */,
 				D45F051629BAD25A0008E2FB /* PlaylistVC.swift in Sources */,
+				D4DCE12B2A1BF042002A52FD /* SearchResultSubtitleTableViewCellViewModel.swift in Sources */,
 				D45F050729BAD1AD0008E2FB /* SearchVC.swift in Sources */,
 				D45F050929BAD1C40008E2FB /* LibraryVC.swift in Sources */,
 				D45F051E29BAD2AE0008E2FB /* HapticsManager.swift in Sources */,
@@ -466,6 +473,7 @@
 				D493B7182A10EA1A008EECE0 /* CategoryVC.swift in Sources */,
 				D45F04EB29BACF910008E2FB /* SceneDelegate.swift in Sources */,
 				D45F050E29BAD20D0008E2FB /* WelcomeVC.swift in Sources */,
+				D4DCE1292A1BEECC002A52FD /* SearchResultSubTitleTableViewCell.swift in Sources */,
 				D45F051029BAD2280008E2FB /* SettingsVC.swift in Sources */,
 				D4EACEBB29E3506F00F10118 /* AlbumDetailsResponse.swift in Sources */,
 				D45F051C29BAD29A0008E2FB /* APICaller.swift in Sources */,

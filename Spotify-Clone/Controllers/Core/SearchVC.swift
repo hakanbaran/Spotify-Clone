@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SearchVC: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     
@@ -72,19 +73,12 @@ class SearchVC: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
                 }
             }
         }
-        
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         collectionView.frame = view.bounds
-        
     }
-    
-    
     
     func updateSearchResults(for searchController: UISearchController) {
     }
@@ -93,8 +87,6 @@ class SearchVC: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
         guard let resultController = searchController.searchResultsController as? SearchResultVC, let query = searchController.searchBar.text, !query.trimmingCharacters(in: .whitespaces).isEmpty else {
             return
         }
-        
-        
         resultController.delegate = self
         
         APICaller.shared.search(with: query) { result in
@@ -119,7 +111,11 @@ extension SearchVC: SearchResultVCDelegate {
     func didTapResult(_ result: SearchResult) {
         switch result {
         case .artist(let model):
-            break
+            guard let url = URL(string: model.external_urls["spotify"] ?? "") else {
+                return
+            }
+            let vc = SFSafariViewController(url: url)
+            present(vc, animated: true)
         case .album(model: let model):
             let vc = AlbumVC(album: model)
             vc.navigationItem.largeTitleDisplayMode = .never
