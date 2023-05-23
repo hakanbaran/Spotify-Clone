@@ -41,6 +41,7 @@ class PlaylistVC: UIViewController {
     }
     
     private var viewModels = [RecommendedTrackCellViewModel]()
+    private var tracks = [AudioTrack]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +63,7 @@ class PlaylistVC: UIViewController {
                 switch result {
                 case .success(let model):
                     // RecommendedTrackCellViewModel
+                    self?.tracks = model.tracks.items.compactMap({$0.track})
                     self?.viewModels = model.tracks.items.compactMap({
                         RecommendedTrackCellViewModel(name: $0.track.name, artistName: $0.track.artists?.first?.name ?? "", artworkURL: URL(string: $0.track.album?.images.first?.url ?? ""))
                     })
@@ -129,7 +131,9 @@ extension PlaylistVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
+        let index = indexPath.row
+        let track = tracks[index]
+        PlaybackPresenter.startPlayback(from: self, track: track)
         // Play Song
     }
     
@@ -139,7 +143,7 @@ extension PlaylistVC: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTabPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
         // Start play list play in queue
         
-        print("Hakan Baran")
+        PlaybackPresenter.startPlayback(from: self, tracks: tracks)
     }
     
     

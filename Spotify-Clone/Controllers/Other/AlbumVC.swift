@@ -32,6 +32,7 @@ class AlbumVC: UIViewController {
     
     
     private var viewModels = [AlbumCollectionViewCellViewModel]()
+    private var tracks = [AudioTrack]()
     
     init(album: Album) {
         self.album = album
@@ -70,7 +71,7 @@ class AlbumVC: UIViewController {
                 
                 switch result {
                 case .success(let model):
-                    
+                    self?.tracks = model.tracks.items
                     self?.viewModels = model.tracks.items.compactMap({
                         AlbumCollectionViewCellViewModel(name: $0.name, artistName: $0.artists?.first?.name ?? "")
                     })
@@ -132,8 +133,9 @@ extension AlbumVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        
         // Play Song
+        let track = tracks[indexPath.row]
+        PlaybackPresenter.startPlayback(from: self, track: track)
     }
     
 }
@@ -142,7 +144,10 @@ extension AlbumVC: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTabPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
         // Start play list play in queue
         
-        print("Hakan Baran")
+        PlaybackPresenter.startPlayback(from: self, tracks: tracks)
+        
+        
+    
     }
     
     
