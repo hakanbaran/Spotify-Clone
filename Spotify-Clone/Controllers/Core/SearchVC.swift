@@ -131,9 +131,6 @@ extension SearchVC: SearchResultVCDelegate {
 }
 
 
-    
-    
-//}
 extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
