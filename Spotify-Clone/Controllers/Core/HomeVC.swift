@@ -103,11 +103,6 @@ class HomeVC: UIViewController {
             vc.navigationItem.largeTitleDisplayMode = .never
             navigationController?.pushViewController(vc, animated: true)
             
-            
-            
-            
-            
-            
         case .newReleases:
             let album = newAlbums[indexPath.row]
             let vc = AlbumVC(album: album)
@@ -117,7 +112,7 @@ class HomeVC: UIViewController {
             
         case .recommendedTracks:
             let track = tracks[indexPath.row]
-            PlaybackPresenter.startPlayback(from: self, track: track)
+            PlaybackPresenter.shared.startPlayback(from: self, track: track)
             
         }
         
