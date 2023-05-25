@@ -21,6 +21,8 @@ class AlbumVC: UIViewController {
         
         let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(60)), subitem: item, count: 1)
         
+        
+        
         let section = NSCollectionLayoutSection(group: group)
         
         section.boundarySupplementaryItems = [NSCollectionLayoutBoundarySupplementaryItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.5)), elementKind: UICollectionView.elementKindSectionHeader, alignment: .top)]
@@ -134,7 +136,8 @@ extension AlbumVC: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         // Play Song
-        let track = tracks[indexPath.row]
+        var track = tracks[indexPath.row]
+        track.album = self.album
         PlaybackPresenter.shared.startPlayback(from: self, track: track)
     }
     
@@ -144,10 +147,20 @@ extension AlbumVC: PlaylistHeaderCollectionReusableViewDelegate {
     func playlistHeaderCollectionReusableViewDidTabPlayAll(_ header: PlaylistHeaderCollectionReusableView) {
         // Start play list play in queue
         
-        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracks)
         
         
-    
+        let tracksWithAlbum: [AudioTrack] = tracks.compactMap({
+            var track = $0
+            track.album = self.album
+            
+            
+            return track
+        })
+        
+        
+        
+        PlaybackPresenter.shared.startPlayback(from: self, tracks: tracksWithAlbum)
+        
     }
     
     

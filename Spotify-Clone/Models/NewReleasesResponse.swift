@@ -23,7 +23,7 @@ struct Album: Codable {
     let id: String
     let name: String
     let release_date: String
-    let images: [APIImage]
+    var images: [APIImage]
     let total_tracks: Int
     let artists: [Artist]
 }
