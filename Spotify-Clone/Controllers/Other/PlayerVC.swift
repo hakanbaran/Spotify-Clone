@@ -49,6 +49,7 @@ class PlayerVC: UIViewController {
     }
     
     private func configure() {
+        print(dataSource?.imageURL)
         imageView.sd_setImage(with: dataSource?.imageURL)
         controlsView.configure(with: PlayerControlsViewViewModel(title: dataSource?.songName, subtitle: dataSource?.subtitle))
         
