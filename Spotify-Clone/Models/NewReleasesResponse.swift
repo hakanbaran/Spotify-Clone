@@ -20,7 +20,7 @@ struct AlbumsResponse: Codable {
 struct Album: Codable {
     let album_type: String
     let available_markets: [String]
-    let id: String
+    var id: String
     let name: String
     let release_date: String
     var images: [APIImage]

@@ -89,8 +89,6 @@ class AlbumVC: UIViewController {
         
     }
     
-    
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
@@ -152,17 +150,9 @@ extension AlbumVC: PlaylistHeaderCollectionReusableViewDelegate {
         let tracksWithAlbum: [AudioTrack] = tracks.compactMap({
             var track = $0
             track.album = self.album
-            
-            
             return track
         })
-        
-        
-        
         PlaybackPresenter.shared.startPlayback(from: self, tracks: tracksWithAlbum)
-        
     }
-    
-    
 }
 

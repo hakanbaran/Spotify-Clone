@@ -25,7 +25,6 @@ class PlayerVC: UIViewController {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.backgroundColor = .blue
         return imageView
     }()
     
@@ -49,7 +48,6 @@ class PlayerVC: UIViewController {
     }
     
     private func configure() {
-        print(dataSource?.imageURL)
         imageView.sd_setImage(with: dataSource?.imageURL)
         controlsView.configure(with: PlayerControlsViewViewModel(title: dataSource?.songName, subtitle: dataSource?.subtitle))
         
@@ -69,6 +67,11 @@ class PlayerVC: UIViewController {
     
     @objc func didTapAction() {
         // Action
+    }
+    
+    func refreshUI() {
+        
+        configure()
     }
 }
 
