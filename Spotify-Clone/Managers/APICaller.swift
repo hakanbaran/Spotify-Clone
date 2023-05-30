@@ -46,6 +46,37 @@ final class APICaller {
         
     }
     
+    public func gerCurrentUserPlaylists(completion: @escaping(Result<[Playlist], Error>) -> Void) {
+        createRequest(with: URL(string: Constans.baseAPIURL+"/me/playlists?limit=50"), type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let result = try JSONDecoder().decode(LibraryPlaylistsResponse.self, from: data)
+                    completion(.success(result.items))
+                    
+                } catch {
+                    print(error)
+                    completion(.failure(error))
+                }
+            }
+            task.resume()
+        }
+        
+    }
+    public func createPlatlist(with name: String, completion: @escaping (Bool) -> Void) {
+        
+    }
+    public func addTrackToPlaylist(track: AudioTrack, playlist: Playlist, completion: @escaping (Bool) -> Void) {
+        
+    }
+    public func removeTrackFromPlaylist(track: AudioTrack, playlist: Playlist, completion: @escaping (Bool) -> Void) {
+        
+    }
+    
     
     
     // MARK: - Playlists
