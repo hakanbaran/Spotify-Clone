@@ -12,13 +12,27 @@ class LibraryPlaylistsVC: UIViewController {
     var playlists = [Playlist]()
     
     private let noPlaylistsView = ActionLabelView()
+    
+    private let tableView: UITableView = {
+        
+        let tableView = UITableView(frame: .zero, style: .grouped)
+        tableView.register(SearchResultSubtitleTableViewCell.self, forCellReuseIdentifier: SearchResultSubtitleTableViewCell.identifier)
+        tableView.isHidden = true
+        return tableView
+        
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .systemBackground
-        
         setUpNoPlaylistsView()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        view.addSubview(tableView)
+        
+        
         
         fetchData()
     }
@@ -27,6 +41,8 @@ class LibraryPlaylistsVC: UIViewController {
         super.viewDidLayoutSubviews()
         noPlaylistsView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
         noPlaylistsView.center = view.center
+        
+        tableView.frame = view.bounds
     }
     
     private func setUpNoPlaylistsView() {
@@ -39,9 +55,14 @@ class LibraryPlaylistsVC: UIViewController {
         if playlists.isEmpty {
             // Show Label
             noPlaylistsView.isHidden = false
+            tableView.isHidden = true
             
         } else {
             // Show Table
+            tableView.reloadData()
+            noPlaylistsView.isHidden = true
+            tableView.isHidden = false
+            
         }
     }
     
@@ -58,12 +79,60 @@ class LibraryPlaylistsVC: UIViewController {
             }
         }
     }
+    
+    public func showCreatePlaylistAlert() {
+        let alert = UIAlertController(title: "New Playlists", message: "Enter Playlist Name.", preferredStyle: .alert)
+        alert.addTextField { textField in
+            textField.placeholder = "Playlist..."
+        }
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Create", style: .default, handler: { _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {
+                return
+            }
+            
+            APICaller.shared.createPlatlist(with: text) { [weak self] success in
+                if success {
+                     // Refresh list of playlists
+                    self?.fetchData()
+                } else {
+                    print("Failed to create Playlist")
+                }
+            }
+        }))
+        
+        present(alert, animated: true)
+    }
 }
 
 extension LibraryPlaylistsVC: ActionLabelViewDelegate {
     func actionLabelViewDidTapButton(_ actionView: ActionLabelView) {
         // Show Creation UI
+        showCreatePlaylistAlert()
     }
     
     
+}
+
+extension LibraryPlaylistsVC: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return playlists.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchResultSubtitleTableViewCell.identifier, for: indexPath) as? SearchResultSubtitleTableViewCell else {
+            return UITableViewCell()
+        }
+        let playlist = playlists[indexPath.row]
+        
+        cell.configure(with: SearchResultSubtitleTableViewCellViewModel(title: playlist.name, subtitle: playlist.owner.display_name, imageURL: URL(string: playlist.images.first?.url ?? "")))
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
 }
