@@ -155,11 +155,9 @@ extension LibraryPlaylistsVC: UITableViewDelegate, UITableViewDataSource {
         }
         
         
-        
-        
-        
         let vc = PlaylistVC(playlist: playlist)
         vc.navigationItem.largeTitleDisplayMode = .never
+        vc.isOwner = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }
