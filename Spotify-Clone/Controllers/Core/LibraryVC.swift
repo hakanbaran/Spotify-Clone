@@ -26,13 +26,11 @@ class LibraryVC: UIViewController {
         
         view.addSubview(scrollView)
         scrollView.delegate = self
-        scrollView.backgroundColor = .yellow
         scrollView.contentSize = CGSize(width: view.width*2, height: scrollView.height)
         addChildren()
         
         view.addSubview(toggleView)
         toggleView.delegate = self
-        
         
         updateBarButtons()
         
@@ -62,6 +60,11 @@ class LibraryVC: UIViewController {
         scrollView.addSubview(playlistsVC.view)
         playlistsVC.view.frame = CGRect(x: 0, y: 0, width: scrollView.width, height: scrollView.height)
         playlistsVC.didMove(toParent: self)
+        
+        addChild(albumsVC)
+        scrollView.addSubview(albumsVC.view)
+        albumsVC.view.frame = CGRect(x: view.width, y: 0, width: scrollView.width, height: scrollView.height)
+        albumsVC.didMove(toParent: self)
     }
 }
 
@@ -70,9 +73,11 @@ extension LibraryVC: UIScrollViewDelegate {
         if scrollView.contentOffset.x >= (view.width-100) {
             toggleView.update(for: .album)
             updateBarButtons()
+            
         } else {
             toggleView.update(for: .playlist)
             updateBarButtons()
+            
         }
         
     }

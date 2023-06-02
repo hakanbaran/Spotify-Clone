@@ -27,6 +27,9 @@ class LibraryPlaylistsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
+        
         view.backgroundColor = .systemBackground
         setUpNoPlaylistsView()
         
@@ -75,7 +78,7 @@ class LibraryPlaylistsVC: UIViewController {
     }
     
     private func fetchData() {
-        APICaller.shared.gerCurrentUserPlaylists { [weak self] result in
+        APICaller.shared.getCurrentUserPlaylists { [weak self] result in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let playlists):
