@@ -153,6 +153,7 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
+        HapticsManager.shared.vibrateForSelection()
         let category = categoryList[indexPath.row]
         let vc = CategoryVC(category: category)
         
