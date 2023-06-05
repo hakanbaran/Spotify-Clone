@@ -44,9 +44,6 @@ class SearchVC: UIViewController, UISearchResultsUpdating, UISearchBarDelegate {
     }))
     
     
-    
-    
-    
     // MARK: - Lifecycle
 
     override func viewDidLoad() {
@@ -131,7 +128,7 @@ extension SearchVC: SearchResultVCDelegate {
 }
 
 
-extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -160,8 +157,6 @@ extension SearchVC: UICollectionViewDelegate, UICollectionViewDataSource {
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
-    
-    
     
     
 }
