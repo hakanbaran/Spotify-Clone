@@ -54,11 +54,15 @@ final class PlaybackPresenter {
          self.track = track
          self.tracks = []
          let vc = PlayerVC()
+         
          vc.title = track.name
          vc.dataSource = self
          vc.delegate = self
+         vc.modalPresentationStyle = .fullScreen
          viewController.present(UINavigationController(rootViewController: vc), animated: true) { [weak self] in
              self?.player?.play()
+             print("Hakan")
+             
          }
          self.playerVC = vc
         
@@ -78,10 +82,13 @@ final class PlaybackPresenter {
          self.playerQueue?.play()
          
         let vc = PlayerVC()
+         
          vc.delegate = self
          vc.dataSource = self
         viewController.present(UINavigationController(rootViewController: vc), animated: true)
+         print("Hakan2")
          self.playerVC = vc
+         
     }
 }
 

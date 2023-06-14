@@ -20,6 +20,7 @@ class LibraryPlaylistsVC: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(SearchResultSubtitleTableViewCell.self, forCellReuseIdentifier: SearchResultSubtitleTableViewCell.identifier)
         tableView.isHidden = true
+        tableView.backgroundColor = .clear
         return tableView
         
     }()

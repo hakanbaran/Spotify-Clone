@@ -60,6 +60,7 @@ class SearchResultSubtitleTableViewCell: UITableViewCell {
         label.frame = CGRect(x: iconImageView.right+10, y: 0, width: contentView.width-iconImageView.right-15, height: labelHeight)
         subtitleLabel.frame = CGRect(x: iconImageView.right+10, y: label.bottom, width: contentView.width-iconImageView.right-15, height: labelHeight)
         
+        
     }
     
     override func prepareForReuse() {

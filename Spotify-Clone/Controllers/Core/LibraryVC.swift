@@ -40,6 +40,7 @@ class LibraryVC: UIViewController {
         super.viewDidLayoutSubviews()
         scrollView.frame = CGRect(x: 0, y: view.safeAreaInsets.top+55, width: view.width, height: view.height-view.safeAreaInsets.top-view.safeAreaInsets.bottom-55)
         toggleView.frame = CGRect(x: 0, y: view.safeAreaInsets.top, width: 200, height: 55)
+        navigationController?.navigationBar.tintColor = .label
     }
     
     private func updateBarButtons() {
